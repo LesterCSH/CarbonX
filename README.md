@@ -11,7 +11,7 @@ This project is developed under the Gifted Education Fund Course [GEF 2022-11: C
 - Lester, CHONG Sik Hin
   - Project Manager | Frontend 
   - School: Li Po Chun United World College
-  - Email: lester25@lpcuwc.edu.hk
+  - Email: Lester25@lpcuwc.edu.hk
 
 - Marco, WONG Sai Lung
   - Storage Chain | Backend 
