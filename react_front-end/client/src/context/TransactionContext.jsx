@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { ethers } from "ethers";
 
+import { ethValue } from "../components/Welcome";
+
 import { contractABI, contractAddress } from "../utils/constants";
 
 export const TransactionContext = React.createContext();
@@ -107,7 +109,9 @@ export const TransactionsProvider = ({ children }) => {
         const { addressTo, amount, keyword, message } = formData;
         const transactionsContract = createEthereumContract();
         const parsedAmount = ethers.utils.parseEther(amount);
-
+        console.log(amount);
+        console.log(ethValue);
+        
         await ethereum.request({
           method: "eth_sendTransaction",
           params: [{
@@ -117,6 +121,9 @@ export const TransactionsProvider = ({ children }) => {
             value: parsedAmount._hex,
           }],
         });
+        
+        // Update the value of 'amount' in the 'formData' state
+        handleChange({ target: { name: 'amount', value: ethValue.toString() } });
 
         const transactionHash = await transactionsContract.addToBlockchain(addressTo, parsedAmount, message, keyword);
 
