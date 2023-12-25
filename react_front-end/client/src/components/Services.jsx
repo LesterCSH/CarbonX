@@ -41,15 +41,15 @@ const Services = () => (
           subtitle="The platform ensures the credibility of carbon credit trading between companies by leveraging blockchain technology. The decentralized nature of the blockchain ensures transparency and prevents dishonest dealings."
         />
         <ServiceCard
-          color="bg-[#F84550]"
+          color="bg-[#8945F8]"
           title="Immutability"
-          icon={<BiSearchAlt fontSize={21} className="text-white" />}
+          icon={<RiHeart2Fill fontSize={21} className="text-white" />}
           subtitle="Carbon emission records are recorded and stored on a blockchain, ensuring their immutability. This ensures the integrity and reliability of the carbon emission data, making it tamper-resistant."
         />
         <ServiceCard
-          color="bg-[#8945F8]"
+          color="bg-[#F84550]"
           title="Verification and Audit"
-          icon={<RiHeart2Fill fontSize={21} className="text-white" />}
+          icon={<BiSearchAlt fontSize={21} className="text-white" />}
           subtitle="The system enables storage and audit of carbon emission records, allowing companies and regulators to validate emissions data easily. This promotes accountability and trust in the carbon credit ecosystem."
         />
       </div>
