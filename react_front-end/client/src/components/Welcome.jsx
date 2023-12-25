@@ -41,7 +41,7 @@ const Welcome = () => {
             Trading Carbon Credit <br /> across the world
           </h1>
           <p className="text-left mt-5 text-white font-light md:w-9/12 w-11/12 text-base">
-            Explore the crypto world. Trading Carbon Credit easily on CarbonX.
+            Tracking and Trading Carbon Credits easily on CarbonX.
           </p>
           {!currentAccount && (
             <button
@@ -51,42 +51,27 @@ const Welcome = () => {
             >
               <AiFillPlayCircle className="text-white mr-2" />
               <p className="text-white text-base font-semibold">
-                Connect Wallet
+                Connect your Wallet through MetaMask
               </p>
             </button>
           )}
 
-          <div className="grid sm:grid-cols-3 grid-cols-2 w-full mt-10">
-            <div className={`rounded-tl-2xl ${companyCommonStyles}`}>
-              Reliability
-            </div>
-            <div className={companyCommonStyles}>Security</div>
-            <div className={`sm:rounded-tr-2xl ${companyCommonStyles}`}>
-              Carbon Trading
-            </div>
-            <div className={`sm:rounded-bl-2xl ${companyCommonStyles}`}>
-              Web 3.0
-            </div>
-            <div className={companyCommonStyles}>Low Fees</div>
-            <div className={`rounded-br-2xl ${companyCommonStyles}`}>
-              Blockchain
-            </div>
-          </div>
+          
         </div>
 
         <div className="flex flex-col flex-1 items-center justify-start w-full mf:mt-0 mt-10">
-          <div className="p-3 flex justify-end items-start flex-col rounded-xl h-40 sm:w-72 w-full my-5 eth-card .white-glassmorphism ">
+          <div className="p-3 flex justify-end items-start flex-col rounded-xl h-30 sm:w-96 w-full my-5 eth-card .white-glassmorphism ">
             <div className="flex justify-between flex-col w-full h-full">
               <div className="flex justify-between items-start">
-                <div className="w-10 h-10 rounded-full border-2 border-white flex justify-center items-center">
-                </div>
+                
+                
               </div>
               <div>
-                <p className="text-white font-light text-sm">
-                  {shortenAddress(currentAccount)}
+                <p className="text-white font-light text-ms">
+                  {currentAccount}
                 </p>
                 <p className="text-white font-semibold text-lg mt-1">
-                  Ethereum
+                  Check your address ↑
                 </p>
               </div>
             </div>
