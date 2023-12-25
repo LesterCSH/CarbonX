@@ -46,6 +46,17 @@ To connect a MetaMask wallet to the webpage, follow these steps:
 
 5. Do you see your account on the webpage? If you see it, then you are done!
 
+## Testing Transaction
+
+1. Please follow this guide to add an account into your MetaMask wallet with balance:
+[https://dev.to/daltonic/how-to-load-unlimited-free-ethers-to-metamask-wallet-86k](https://dev.to/daltonic/how-to-load-unlimited-free-ethers-to-metamask-wallet-86k)
+
+2. For "Address To", enter the address of the account you want to transfer money to:
+
+![image](https://github.com/LesterCSH/CarbonX/assets/81981503/4561f5b9-57de-4e7f-8bb4-87d564572757) ![image](https://github.com/LesterCSH/CarbonX/assets/81981503/386c96ea-ac04-4e4a-902a-d2631eda7f0c)
+
+
+
 ‎‎
 ‎
 ##
