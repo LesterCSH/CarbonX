@@ -8,17 +8,17 @@ This project is developed under the Gifted Education Fund Course [GEF 2022-11: C
 
 ## Team
 
-- Lester, Chong Sik Hin
+- Lester, CHONG Sik Hin
   - Project Manager | Frontend 
   - School: Li Po Chun United World College
   - Email: lester25@lpcuwc.edu.hk
 
-- Marco, Wong ()
+- Marco, WONG Sai Lung
   - Storage Chain | Backend 
   - School: Henrietta Secondary School
-  - Email: ()
+  - Email: marco.coolcat55@gmail.com
 
-- Alvan, Szeto Yuen Ho
+- Alvan, SZETO Yuen Ho
   - Trading Chain | Frontend
   - School: Lai King Catholic Secondary School
   - Email: s2019089@lkcss.edu.hk
