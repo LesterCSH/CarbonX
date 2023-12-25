@@ -6,7 +6,7 @@ This repository contains the code for a React webpage. The webpage is built usin
 To run the React webpage locally, follow these steps:
 
 1. Download CarbonX onto your computer and unzip the file. Drag the whole folder into Visual Studio Code. Click "Yes, I trust the authors".   
-2. On the left Explorer pane click "CARBONX_MAIN". Then, click "react_front-end".
+2. On the left Explorer pane click "CARBONX_MAIN". Check if "react_front-end" exists. 
 3. Click <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>`</kbd> to open a new terminal.
 4. Change the directory:
 ```
