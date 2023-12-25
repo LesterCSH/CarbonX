@@ -21,7 +21,7 @@ function addCompanyToDatabase(newCompany) {
         var str = JSON.stringify(data);
         fs.writeFile('./companyData.json', str, (err) => {
             if (err) console.error(err);
-            //console.log(`Sussecfully add new company named ${newCompany} to company list.`)
+            //console.log(`Successfully add new company named ${newCompany} to company list.`)
         })
     })
 }
@@ -180,7 +180,7 @@ async function transaction(address, id){
         console.log(`You need to pay extra 1% (${fee} ETH) of transaction fee.`);
         console.log('You need to pay 20000000000 per 1 ETH of gas price')
         console.log(`You need to pay total ${totalPay} ETH + some gas price.`);
-        var ask = await prompt('Contionue? (y/n)');
+        var ask = await prompt('Continue? (y/n)');
         console.clear();
         if(ask == 'y'){
             web3.eth.sendTransaction({
@@ -215,7 +215,7 @@ async function transaction(address, id){
         console.log('Declare:');
         console.log(`You are going to transaction ${value} of Carbon credit to ${toCompany}.`)
         console.log(`You need to pay extra 1% (${fee} Carbon) of transaction fee.`);
-        var ask = await prompt('Contionue? (y/n)');
+        var ask = await prompt('Continue? (y/n)');
         console.clear();
         if(ask == 'y'){
             if(data.info[id].credit-(value+fee)>=0){
@@ -249,7 +249,7 @@ async function transaction(address, id){
         var value = await prompt('Transaction value (ether): ');
         value = parseFloat(value);
         console.log(`You are going to transaction ${value} ETH to ${toCompany}.`)
-        var ask = await prompt('Contionue? (y/n)');
+        var ask = await prompt('Continue? (y/n)');
         console.clear();
         if(ask == 'y'){
             web3.eth.sendTransaction({
@@ -287,7 +287,7 @@ async function main(){
                 var ETHBalance = web3.utils.fromWei(WeiBalance, 'ether');
                 var companyName = findCompanyName(info.companyID);
                 console.log(`Welcome, ${companyName}!`);
-                console.log('Account infomation:')
+                console.log('Account information:')
                 console.log(`ETH address: ${ETHAddress}`);
                 console.log(`Balance: ${ETHBalance} ETH`);
                 console.log(`Credit: ${data.info[info.companyID].credit}`)
