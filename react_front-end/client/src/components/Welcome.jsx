@@ -22,18 +22,38 @@ const Input = ({ placeholder, name, type, value, handleChange }) => (
 
 const Welcome = () => {
   const { currentAccount, connectWallet, handleChange, sendTransaction, formData, isLoading } = useContext(TransactionContext);
-  const [ethPrice, setEthPrice] = useState(null);
+  const [carbonPrice, setCarbonPrice] = useState(64);
+  const [ethPrice, setEthPrice] = useState(64);
   const [showConfirmation, setShowConfirmation] = useState(false);
 
   useEffect(() => {
-    fetch('https://api.dovu.earth/api/carbon/price')
-      .then(response => response.json())
-      .then(data => {
-        setEthPrice(data.eth_price);
-      })
-      .catch(error => {
-        console.log('An error occurred:', error);
-      });
+    const fetchCarbonPrice = async () => {
+      try {
+        const response = await fetch('https://api.dovu.earth/api/carbon/price');
+        const data = await response.json();
+        const newCarbonPrice = data.data.price; 
+        setCarbonPrice(newCarbonPrice);
+      } catch (error) {
+        console.error('Error fetching Carbon price:', error);
+      }
+    };
+
+    fetchCarbonPrice();
+  }, []);
+  
+  useEffect(() => {
+    const fetchEthPrice = async () => {
+      try {
+        const response = await fetch('https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=BTC,USD,EUR');
+        const data = await response.json();
+        const newEthPrice = data.EUR; 
+        setEthPrice(newEthPrice);
+      } catch (error) {
+        console.error('Error fetching Carbon price:', error);
+      }
+    };
+
+    fetchEthPrice();
   }, []);
 
   const handleSubmit = (e) => {
@@ -43,7 +63,7 @@ const Welcome = () => {
 
     if (!addressTo || !amount || !keyword || !message || !ethPrice) return;
 
-    const ethValue = ethPrice * amount;
+    const ethValue = carbonPrice * amount / ethPrice;
 
     setShowConfirmation(true);
   };
@@ -58,7 +78,7 @@ const Welcome = () => {
       return;
     }
   
-    const ethValue = ethPrice * amount;
+    const ethValue = carbonPrice * amount / ethPrice;
   
     const confirmed = window.confirm(`You are about to send ${ethValue} ETH. Do you want to proceed?`);
   
@@ -189,7 +209,7 @@ const Welcome = () => {
               Confirm Payment
             </p>
             <p className="mb-4">
-              You are about to send {ethPrice * formData.amount} ETH. Do you want to proceed?
+              You are about to send {carbonPrice * formData.amount / ethPrice} ETH. Do you want to proceed?
             </p>
             <div className="flex justify-end">
               <button
