@@ -1,4 +1,4 @@
-![CarbonX_Logo](https://github.com/LesterCSH/CarbonX/assets/81981503/ca68e8c6-8344-46d5-84f0-2312ba57355c)
+![CarbonX_Logo](https://github.com/LesterCSH/CarbonX/assets/81981503/9459c6b1-bae0-43a1-a2b5-c21e2f5c2dfa)
 # CarbonX
 
 The proposed Carbon Credit Ecosystem utilizes blockchain technology to ensure the trading between companies is credible, preventing dishonest dealings, and records and stores carbon emission records on a blockchain for immutability. 
