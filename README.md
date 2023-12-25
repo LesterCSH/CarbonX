@@ -13,7 +13,7 @@ This project is developed under the Gifted Education Fund Course GEF2022-11: Cod
   - School: Li Po Chun United World College
   - Email: lester25@lpcuwc.edu.hk
 
-- Marco Wong ()
+- Marco, Wong ()
   - Storage Chain | Backend 
   - School: Henrietta Secondary School
   - Email: ()
@@ -36,3 +36,9 @@ The CarbonX project aims to provide the following key functions:
 ## Licensing
 
 CarbonX is released under the [Bugs License r2](https://github.com/benlk/misc-licenses/blob/master/bugs-license.md). Please see the [LICENSE](LICENSE.md) file for more details.
+
+‎‎
+‎
+##
+ 
+![Banner README](https://github.com/LesterCSH/CarbonX/assets/81981503/bf99d463-aeb0-45e3-9936-df8b47fe7c1e)
