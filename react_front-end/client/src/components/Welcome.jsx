@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { AiFillPlayCircle } from "react-icons/ai";
 import { SiEthereum } from "react-icons/si";
 import { BsInfoCircle } from "react-icons/bs";
@@ -22,15 +22,72 @@ const Input = ({ placeholder, name, type, value, handleChange }) => (
 
 const Welcome = () => {
   const { currentAccount, connectWallet, handleChange, sendTransaction, formData, isLoading } = useContext(TransactionContext);
+  const [ethPrice, setEthPrice] = useState(null);
+  const [showConfirmation, setShowConfirmation] = useState(false);
+
+  useEffect(() => {
+    fetch('https://api.dovu.earth/api/carbon/price')
+      .then(response => response.json())
+      .then(data => {
+        setEthPrice(data.eth_price);
+      })
+      .catch(error => {
+        console.log('An error occurred:', error);
+      });
+  }, []);
 
   const handleSubmit = (e) => {
-    const { addressTo, amount, keyword, message } = formData;
-
     e.preventDefault();
 
-    if (!addressTo || !amount || !keyword || !message) return;
+    const { addressTo, amount, keyword, message } = formData;
 
-    sendTransaction();
+    if (!addressTo || !amount || !keyword || !message || !ethPrice) return;
+
+    const ethValue = ethPrice * amount;
+
+    setShowConfirmation(true);
+  };
+
+  const handleConfirmPayment = () => {
+    setShowConfirmation(false);
+  
+    const { addressTo, amount, keyword, message } = formData;
+  
+    if (!ethPrice || !amount || isNaN(ethPrice) || isNaN(amount)) {
+      console.log("Invalid ethPrice or amount");
+      return;
+    }
+  
+    const ethValue = ethPrice * amount;
+  
+    const confirmed = window.confirm(`You are about to send ${ethValue} ETH. Do you want to proceed?`);
+  
+    if (!confirmed) {
+      return;
+    }
+
+    // Construct the transaction object
+    const transactionObject = {
+      to: addressTo,
+      value: window.ethereum.utils.toWei(ethValue.toString(), "ether"),
+      data: keyword,
+      gas: 21000, // Or specify the desired gas limit
+    };
+
+    // Send the transaction using MetaMask
+    window.ethereum
+      .request({
+        method: "eth_sendTransaction",
+        params: [transactionObject],
+      })
+      .then((transactionHash) => {
+        console.log("Transaction Hash:", transactionHash);
+        // Add your desired logic after the transaction is sent successfully
+      })
+      .catch((error) => {
+        console.log("An error occurred:", error);
+        // Add your error handling logic here
+      });
   };
 
   return (
@@ -55,16 +112,13 @@ const Welcome = () => {
               </p>
             </button>
           )}
-
-          
         </div>
 
         <div className="flex flex-col flex-1 items-center justify-start w-full mf:mt-0 mt-10">
           <div className="p-3 flex justify-end items-start flex-col rounded-xl h-30 sm:w-96 w-full my-5 eth-card .white-glassmorphism ">
             <div className="flex justify-between flex-col w-full h-full">
               <div className="flex justify-between items-start">
-                
-                
+                {/* ...existing code... */}
               </div>
               <div>
                 <p className="text-white font-light text-ms">
@@ -76,28 +130,86 @@ const Welcome = () => {
               </div>
             </div>
           </div>
-          <div className="p-5 sm:w-96 w-full flex flex-col justify-start items-center blue-glassmorphism">
-            <Input placeholder="Address To" name="addressTo" type="text" handleChange={handleChange} />
-            <Input placeholder="Amount (ETH)" name="amount" type="number" handleChange={handleChange} />
-            <Input placeholder="Keyword (Gif)" name="keyword" type="text" handleChange={handleChange} />
-            <Input placeholder="Enter Message" name="message" type="text" handleChange={handleChange} />
-
-            <div className="h-[1px] w-full bg-gray-400 my-2" />
-
-            {isLoading
-              ? <Loader />
-              : (
-                <button
-                  type="button"
-                  onClick={handleSubmit}
-                  className="text-white w-full mt-2 border-[1px] p-2 border-[#3d4f7c] hover:bg-[#3d4f7c] rounded-full cursor-pointer"
-                >
-                  Send now
-                </button>
-              )}
+          <div className="p-5 sm:w-96 w-full flex flex-col justify-start items-center blue-glassmorphism mt-5">
+            <h2 className="text-2xl text-white text-center mb-4">
+              Send Carbon Credits
+            </h2>
+            <form onSubmit={handleSubmit} className="w-full">
+              <Input
+                placeholder="Recipient Address"
+                name="addressTo"
+                type="text"
+                value={formData.addressTo}
+                handleChange={handleChange}
+              />
+              <Input
+                placeholder="Amount"
+                name="amount"
+                type="number"
+                value={formData.amount}
+                handleChange={handleChange}
+              />
+              <Input
+                placeholder="Keyword"
+                name="keyword"
+                type="text"
+                value={formData.keyword}
+                handleChange={handleChange}
+              />
+              <Input
+                placeholder="Message"
+                name="message"
+                type="text"
+                value={formData.message}
+                handleChange={handleChange}
+              />
+              <button
+                type="button"
+                onClick={() => setShowConfirmation(true)}
+                className="w-full bg-[#2952e3] p-3 mt-4 rounded-full cursor-pointer hover:bg-[#2546bd]"
+              >
+                {isLoading ? (
+                  <Loader color="#fff" />
+                ) : (
+                  <SiEthereum className="text-white text-xl" />
+                )}
+                <span className="text-white text-base font-semibold ml-2">
+                  Send
+                </span>
+              </button>
+            </form>
           </div>
         </div>
       </div>
+
+      {showConfirmation && (
+        <div className="fixed inset-0 flex justify-center items-center bg-gray-900 bg-opacity-50">
+          <div className="bg-white p-8 rounded-lg max-w-md">
+            <p className="text-xl font-semibold mb-4">
+              Confirm Payment
+            </p>
+            <p className="mb-4">
+              You are about to send {ethPrice * formData.amount} ETH. Do you want to proceed?
+            </p>
+            <div className="flex justify-end">
+              <button
+                type="button"
+                onClick={handleConfirmPayment}
+                className="px-4 py-2 bg-blue-500 text-white rounded-lg"
+              >
+                Confirm
+              </button>
+              <button
+                type="button"
+                onClick={() => setShowConfirmation(false)}
+                className="px-4 py-2 ml-4 bg-gray-300 text-gray-800 rounded-lg"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
