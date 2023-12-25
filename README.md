@@ -1,10 +1,10 @@
 ![CarbonX_Logo](https://github.com/LesterCSH/CarbonX/assets/81981503/9459c6b1-bae0-43a1-a2b5-c21e2f5c2dfa)
 # CarbonX
 
-The proposed Carbon Credit Ecosystem utilizes blockchain technology to ensure the trading between companies is credible, preventing dishonest dealings, and records and stores carbon emission records on a blockchain for immutability. 
+The proposed Carbon Credit Ecosystem utilises blockchain technology to ensure the trading between companies is credible, preventing dishonest dealings, and records and stores carbon emission records on a blockchain for immutability. 
 
 ## Course
-This project is developed under the Gifted Education Fund Course GEF2022-11: Coding, Cryptography, and FinTech (CCF) Skills Education for Gifted Students in the City University of Hong Kong.
+This project is developed under the Gifted Education Fund Course [GEF 2022-11: Coding, Cryptography, and FinTech (CCF) Skills Education for Gifted Students](https://www.edb.gov.hk/attachment/tc/curriculum-development/major-level-of-edu/gifted/GE-Fund/2022-11_en.pdf) in the City University of Hong Kong. Please support us at our exhibition on 27 Jan 2024 (Sat) from 10:00am to 5:00pm in P1402 on 1/F, YEUNG, CityU, or vote for us [here](https://docs.google.com/forms/d/e/1FAIpQLSfPgzmHwWXYz8UA245Q64vGQMEREYhEx6VNgzr2CdL9Ofc_7w/viewform) (our project ID is P07)!
 
 ## Team
 
