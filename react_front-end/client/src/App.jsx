@@ -15,9 +15,7 @@ const App = () => (
         </Routes>
       </div>
       <Services />
-      <Transactions />
       <Footer />
-      <RegisteredUsers />
     </div>
   </Router>
 );
