@@ -6,22 +6,22 @@ The proposed Carbon Credit Ecosystem utilises blockchain technology to ensure th
 ## Course
 This project is developed under the Gifted Education Fund Course [GEF 2022-11: Coding, Cryptography, and FinTech (CCF) Skills Education for Gifted Students](https://www.edb.gov.hk/attachment/tc/curriculum-development/major-level-of-edu/gifted/GE-Fund/2022-11_en.pdf) in the City University of Hong Kong. Please support us at our exhibition on 27 Jan 2024 (Sat) from 10:00am to 5:00pm in P1402 on 1/F, YEUNG, CityU, or vote for us [here](https://docs.google.com/forms/d/e/1FAIpQLSfPgzmHwWXYz8UA245Q64vGQMEREYhEx6VNgzr2CdL9Ofc_7w/viewform) (our project ID is P07)!
 
-## Team
+## Team (P07)
 
-- Lester, CHONG Sik Hin
+- Lester, CHONG Sik Hin (10)
   - Project Manager | Frontend 
   - School: Li Po Chun United World College
   - Email: Lester25@lpcuwc.edu.hk
 
-- Marco, WONG Sai Lung
-  - Storage Chain | Backend 
-  - School: Henrietta Secondary School
-  - Email: MarcoWong06@outlook.com
-
-- Alvan, SZETO Yuen Ho
+- Alvan, SZETO Yuen Ho (31)
   - Trading Chain | Frontend
   - School: Lai King Catholic Secondary School
   - Email: s2019089@lkcss.edu.hk
+
+- Marco, WONG Sai Lung (39)
+  - Storage Chain | Backend 
+  - School: Henrietta Secondary School
+  - Email: MarcoWong06@outlook.com
 
 ## Functions
 
