@@ -46,3 +46,8 @@ To connect a MetaMask wallet to the webpage, follow these steps:
 
 5. Do you see your account on the webpage? If you see it, then you are done!
 
+‎‎
+‎
+##
+ 
+![Banner README](https://github.com/LesterCSH/CarbonX/assets/81981503/bf99d463-aeb0-45e3-9936-df8b47fe7c1e)
