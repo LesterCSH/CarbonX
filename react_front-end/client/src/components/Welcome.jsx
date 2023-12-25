@@ -64,11 +64,12 @@ const Welcome = () => {
     if (!addressTo || !amount || !keyword || !message || !ethPrice) return;
 
     const ethValue = carbonPrice * amount / ethPrice;
+    
 
     setShowConfirmation(true);
   };
 
-  const handleConfirmPayment = () => {
+  const handleConfirmPayment = async function()  {
     setShowConfirmation(false);
   
     const { addressTo, amount, keyword, message } = formData;
@@ -85,6 +86,10 @@ const Welcome = () => {
     if (!confirmed) {
       return;
     }
+
+    if (!addressTo || !ethValue || !keyword || !message) return;
+
+    await sendTransaction();
 
     // Construct the transaction object
     const transactionObject = {
