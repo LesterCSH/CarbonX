@@ -22,34 +22,35 @@ const Services = () => (
     <div className="flex mf:flex-row flex-col items-center justify-between md:p-20 py-12 px-4">
       <div className="flex-1 flex flex-col justify-start items-start">
         <h1 className="text-white text-3xl sm:text-5xl py-2 text-gradient ">
-          Services that we
+          Achieving a Sustainable Future
           <br />
-          continue to improve
+          by using CarbonX
         </h1>
         <p className="text-left my-2 text-white font-light md:w-9/12 w-11/12 text-base">
-          The best choice for buying and selling your crypto assets, with the
-          various super friendly services we offer
+        The proposed Carbon Credit Ecosystem utilises blockchain technology to ensure 
+        the trading between companies is credible, preventing dishonest dealings, 
+        and records and stores carbon emission records on a blockchain for immutability.
         </p>
       </div>
 
       <div className="flex-1 flex flex-col justify-start items-center">
         <ServiceCard
           color="bg-[#2952E3]"
-          title="Security gurantee"
+          title="Credible Trading"
           icon={<BsShieldFillCheck fontSize={21} className="text-white" />}
-          subtitle="Security is guranteed. We always maintain privacy and maintain the quality of our products"
-        />
-        <ServiceCard
-          color="bg-[#8945F8]"
-          title="Best exchange rates"
-          icon={<BiSearchAlt fontSize={21} className="text-white" />}
-          subtitle="Security is guranteed. We always maintain privacy and maintain the quality of our products"
+          subtitle="The platform ensures the credibility of carbon credit trading between companies by leveraging blockchain technology. The decentralized nature of the blockchain ensures transparency and prevents dishonest dealings."
         />
         <ServiceCard
           color="bg-[#F84550]"
-          title="Fastest transactions"
+          title="Immutability"
+          icon={<BiSearchAlt fontSize={21} className="text-white" />}
+          subtitle="Carbon emission records are recorded and stored on a blockchain, ensuring their immutability. This ensures the integrity and reliability of the carbon emission data, making it tamper-resistant."
+        />
+        <ServiceCard
+          color="bg-[#8945F8]"
+          title="Verification and Audit"
           icon={<RiHeart2Fill fontSize={21} className="text-white" />}
-          subtitle="Security is guranteed. We always maintain privacy and maintain the quality of our products"
+          subtitle="The system enables storage and audit of carbon emission records, allowing companies and regulators to validate emissions data easily. This promotes accountability and trust in the carbon credit ecosystem."
         />
       </div>
     </div>
