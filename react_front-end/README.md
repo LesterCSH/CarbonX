@@ -32,3 +32,17 @@ npm run dev
 ![image](https://github.com/LesterCSH/CarbonX/assets/81981503/b144f263-6ca1-4c60-9899-232531236c14)
 
 Enter the webpage by entering the link next to "Local:", in this case [http://localhost:3000/](http://localhost:3000/), or simply click on the link while clicking <kbd>Ctrl</kbd>.
+
+## Connect Wallet
+
+To connect a MetaMask wallet to the webpage, follow these steps:
+
+1. Download MetaMask as a browser extension through the [MetaMask Webpage](https://metamask.io/download/).
+2. Set up the extension according to its instruction. 
+3. On the website, click "Connect Wallet" and click on the MetaMask icon on the toolbar of your browser.
+4. Select your account and click "Next". Then, click "Connect".
+
+![image](https://github.com/LesterCSH/CarbonX/assets/81981503/b33ac0f8-ab26-4e03-bf1a-5aa97514707f)
+
+5. Do you see your account on the webpage? If you see it, then you are done!
+
