@@ -7,8 +7,6 @@ import { TransactionContext } from "../context/TransactionContext";
 import { shortenAddress } from "../utils/shortenAddress";
 import { Loader } from ".";
 
-const companyCommonStyles = "min-h-[70px] sm:px-0 px-2 sm:min-w-[120px] flex justify-center items-center border-[0.5px] border-gray-400 text-sm font-light text-white";
-
 const Input = ({ placeholder, name, type, value, handleChange }) => (
   <input
     placeholder={placeholder}
@@ -19,6 +17,8 @@ const Input = ({ placeholder, name, type, value, handleChange }) => (
     className="my-2 w-full rounded-sm p-2 outline-none bg-transparent text-white border-none text-sm white-glassmorphism"
   />
 );
+
+const ethValue = (carbonPrice, amount, ethPrice) => carbonPrice * amount / ethPrice;
 
 const Welcome = () => {
   const { currentAccount, connectWallet, handleChange, sendTransaction, formData, isLoading } = useContext(TransactionContext);
@@ -40,7 +40,7 @@ const Welcome = () => {
 
     fetchCarbonPrice();
   }, []);
-  
+
   useEffect(() => {
     const fetchEthPrice = async () => {
       try {
@@ -61,58 +61,38 @@ const Welcome = () => {
 
     const { addressTo, amount, keyword, message } = formData;
 
-    if (!addressTo || !amount || !keyword || !message || !ethPrice) return;
+    if (!addressTo || !amount || !keyword || !message || !ethPrice || !carbonPrice) return;
 
-    const ethValue = carbonPrice * amount / ethPrice;
-    
+    const value = ethValue(carbonPrice, amount, ethPrice);
 
     setShowConfirmation(true);
+
+    // Update the value of 'amount' in the 'formData' state
+    handleChange({ target: { name: 'amount', value: value.toString() } });
   };
 
   const handleConfirmPayment = async function()  {
     setShowConfirmation(false);
-  
+
     const { addressTo, amount, keyword, message } = formData;
-  
+
     if (!ethPrice || !amount || isNaN(ethPrice) || isNaN(amount)) {
       console.log("Invalid ethPrice or amount");
       return;
     }
-  
-    const ethValue = carbonPrice * amount / ethPrice;
-  
-    const confirmed = window.confirm(`You are about to send ${ethValue} ETH. Do you want to proceed?`);
-  
+
+    const value = ethValue(carbonPrice, amount, ethPrice);
+
+    const confirmed = window.confirm(`You are about to send ${value} ETH. Do you want to proceed?`);
+
     if (!confirmed) {
+      handleChange({ target: { name: 'amount', value: value.toString() } });
       return;
     }
 
-    if (!addressTo || !ethValue || !keyword || !message) return;
+    if (!addressTo || !value || !keyword || !message) return;
 
     await sendTransaction();
-
-    // Construct the transaction object
-    const transactionObject = {
-      to: addressTo,
-      value: window.ethereum.utils.toWei(ethValue.toString(), "ether"),
-      data: keyword,
-      gas: 21000, // Or specify the desired gas limit
-    };
-
-    // Send the transaction using MetaMask
-    window.ethereum
-      .request({
-        method: "eth_sendTransaction",
-        params: [transactionObject],
-      })
-      .then((transactionHash) => {
-        console.log("Transaction Hash:", transactionHash);
-        // Add your desired logic after the transaction is sent successfully
-      })
-      .catch((error) => {
-        console.log("An error occurred:", error);
-        // Add your error handling logic here
-      });
   };
 
   return (
@@ -237,6 +217,9 @@ const Welcome = () => {
       )}
     </div>
   );
+  
 };
 
+export { ethValue }; // Exporting the ethValue function separately
 export default Welcome;
+
