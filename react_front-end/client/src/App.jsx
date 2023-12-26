@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Navbar, Welcome, Footer, Services, Transactions } from './components';
-import Register from './components/Register';
-import RegisteredUsers from './components/RegisteredUser';
+//import Register from './components/Register';
+//import RegisteredUsers from './components/RegisteredUser';
 
 const App = () => (
   <Router>
@@ -11,7 +11,7 @@ const App = () => (
       <Navbar />
         <Routes>
           <Route path="/" element={<Welcome />} />
-          <Route path="/register" element={<Register />} />
+
         </Routes>
       </div>
       <Services />
