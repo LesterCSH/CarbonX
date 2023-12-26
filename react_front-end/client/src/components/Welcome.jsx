@@ -85,7 +85,7 @@ const Welcome = () => {
       return;
     }
 
-    const value = ethValue(carbonPrice, amount, ethPrice);
+    const value = amount;
 
     const confirmed = window.confirm(`You are about to send ${value} ETH. Do you want to proceed?`);
 
@@ -152,10 +152,17 @@ const Welcome = () => {
                 handleChange={handleChange}
               />
               <Input
+              placeholder="Credits Needed"
+              name="credits"
+              type="number"
+              value={formData.credits}
+              handleChange={handleChange}
+              />
+              <Input
                 placeholder="Amount"
                 name="amount"
                 type="number"
-                value={formData.amount}
+                value={(formData.credits * carbonPrice / ethPrice)}
                 handleChange={handleChange}
               />
               <Input
@@ -198,7 +205,7 @@ const Welcome = () => {
               Confirm Payment
             </p>
             <p className="mb-4">
-              You are about to send {carbonPrice * formData.amount / ethPrice} ETH. Do you want to proceed?
+              You are about to send {formData.amount} ETH. Do you want to proceed?
             </p>
             <div className="flex justify-end">
               <button
@@ -226,4 +233,3 @@ const Welcome = () => {
 
 export { ethValue }; // Exporting the ethValue function separately
 export default Welcome;
-
