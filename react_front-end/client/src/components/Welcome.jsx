@@ -141,7 +141,7 @@ const Welcome = () => {
           </div>
           <div className="p-5 sm:w-96 w-full flex flex-col justify-start items-center blue-glassmorphism mt-5">
             <h2 className="text-2xl text-white text-center mb-4">
-              Send Carbon Credits
+              Purchase Carbon Credits
             </h2>
             <form onSubmit={handleSubmit} className="w-full">
               <Input
@@ -164,6 +164,7 @@ const Welcome = () => {
                 type="number"
                 value={(formData.credits * carbonPrice / ethPrice)}
                 handleChange={handleChange}
+                readOnly
               />
               <Input
                 placeholder="Keyword"
