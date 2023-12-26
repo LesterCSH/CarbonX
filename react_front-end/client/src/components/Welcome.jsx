@@ -152,11 +152,11 @@ const Welcome = () => {
                 handleChange={handleChange}
               />
               <Input
-              placeholder="Credits Needed"
-              name="credits"
-              type="number"
-              value={formData.credits}
-              handleChange={handleChange}
+                placeholder="Credits Needed"
+                name="credits"
+                type="number"
+                value={formData.credits}
+                handleChange={handleChange}
               />
               <Input
                 placeholder="Amount"
