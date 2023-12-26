@@ -18,7 +18,7 @@ const Input = ({ placeholder, name, type, value, handleChange }) => (
   />
 );
 
-const ethValue = (carbonPrice, amount, ethPrice) => carbonPrice * amount / ethPrice;
+const ethValue = (carbonPrice, amount, ethPrice) => (carbonPrice / ethPrice) * amount;
 
 const Welcome = () => {
   const { currentAccount, connectWallet, handleChange, sendTransaction, formData, isLoading } = useContext(TransactionContext);
@@ -58,17 +58,21 @@ const Welcome = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+  
     const { addressTo, amount, keyword, message } = formData;
-
+  
     if (!addressTo || !amount || !keyword || !message || !ethPrice || !carbonPrice) return;
-
-    const value = ethValue(carbonPrice, amount, ethPrice);
-
+  
+    const value = ethValue(amount * carbonPrice, 1, ethPrice);
+  
     setShowConfirmation(true);
-
+  
     // Update the value of 'amount' in the 'formData' state
     handleChange({ target: { name: 'amount', value: value.toString() } });
+  
+    // Send the calculated ETH value to Metamask
+    handleChange({ target: { name: 'ethValue', value: value.toString() } });
+
   };
 
   const handleConfirmPayment = async function()  {
