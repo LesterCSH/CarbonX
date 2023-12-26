@@ -124,27 +124,12 @@ function findCompanyID(companyName) {
     return false;
 }
 
-async function newBlockHashData() {
-    fs.readFile('./blocks.json', (err, read)=>{
-        if (err) return console.error(err);
-        var blockData = read.toString();
-        blockData = JSON.parse(blockData);
-        var version = '0001';
-        var previousBlockHash = blockData.block[blockData.total-1].blockHash;
-        var merkleRoot = crypto.randomBytes(16).toString('hex');
-        if(Date.now().toString(16).length < 12) var timestamp = '0' + Date.now().toString(16);
-        else var timestamp = Date.now().toString(16);
-        var hash = version+previousBlockHash+merkleRoot+timestamp;
-        return crypto.createHash('sha256').update(hash).digest('hex');
-    })
-}
-
 function addBlock(time, fromID, toID, fee, credit) {
     fs.readFile('./blocks.json', (err, read) => {
         if (err) return console.error(err);
         var blockData = read.toString();
         blockData = JSON.parse(blockData);
-        
+
         var version = '0001';
         var previousBlockHash = blockData.block[blockData.total-1].blockHash;
         var merkleRoot = crypto.randomBytes(16).toString('hex');
@@ -320,6 +305,26 @@ async function transaction(address, id){
     });
 }
 
+function printBlock(blockFrom, blockTo) {fs.readFile('./blocks.json', (err, read)=>{
+    if(err) return console.error(err);
+    var blockData = read.toString();
+    blockData = JSON.parse(blockData);
+    if(blockTo == 'latest') blockTo = blockData.block.length;
+    console.log('\n=== Blockchain ===');
+    blockData.block.forEach((block) => {
+        console.log('---------------------------------------------------------------------');
+        console.log(`Time: ${block.time}`);
+        console.log(`Block hash: ${block.blockHash}`);
+        console.log(`From company ID: ${block.fromID}`);
+        console.log(`To company ID: ${block.toID}`);
+        console.log(`Fee: ${block.fee}`);
+        console.log(`Transactions: ${block.credit}`);
+        console.log('---------------------------------------------------------------------');
+    });
+    console.log('=== End of Blockchain ===');
+    main()
+});}
+
 function init(){web3.eth.getAccounts().then(async (acc) => {
     var ethAcc = acc[0]
     fs.readFile('./companyData.json', (err, read)=>{
@@ -363,6 +368,7 @@ async function main(){
     console.log('Option 1: login');
     console.log('Option 2: register');
     console.log('Option 3: check company ID from companyName');
+    console.log('Option 4: check blockchain');
     console.log('Option 0: exit')
     rl.question('Input your option: ', (option) => {
         var data = require('./companyData.json');
@@ -390,7 +396,9 @@ async function main(){
                 else console.log('Company id is not found!');
                 main();
             });
-        } else if (option == '0'){
+        } else if(option == '4'){
+            printBlock('latest');
+        }else if (option == '0'){
             rl.close();
             console.log('\nApp closed!');
         }
