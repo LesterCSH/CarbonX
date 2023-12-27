@@ -21,7 +21,7 @@ This project is developed under the Gifted Education Fund Course [GEF 2022-11: C
 - Marco, WONG Sai Lung (39)
   - Storage Chain | Backend 
   - School: Henrietta Secondary School
-  - Email: marco.coolcat55@gmail.com
+  - Email: MarcoWong06@outlook.com
 
 ## Functions
 
